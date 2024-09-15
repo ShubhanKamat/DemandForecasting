@@ -163,5 +163,5 @@ The app will be accessible at http://localhost:5000 on your local machine.
 You can test the endpoints using curl or Postman.
 
 
-License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
