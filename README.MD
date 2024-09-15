@@ -10,7 +10,6 @@ This repository contains a production-ready Flask app, as well as a detailed mod
 - [Usage](#usage)
 - [Model APIs](#model-apis)
 - [Transformation Pipeline](#transformation-pipeline)
-- [Configuration](#configuration)
 - [Deployment](#deployment)
 - [License](#license)
 
@@ -123,7 +122,7 @@ curl -X POST http://127.0.0.1:5000/predict -H "Content-Type: application/json" -
 
 ```json
 {
-  "prediction": [predicted_values]
+  "prediction": [ predicted_values ]
 }
 ```
 
