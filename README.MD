@@ -1,6 +1,6 @@
-# ML Model Serving with Flask
+# Retail Demand Forecasting using deep learning
 
-This repository contains a production-ready Flask app for serving multiple machine learning models (ES, ARIMA, Prophet, LSTM). It also includes pipelines for data ingestion, transformation, and automated retraining of models.
+This repository contains a production-ready Flask app, as well as a detailed model training notebook for serving a CNN model trained to predict the sales of a particular SKU offered by a restaurant.
 
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -9,23 +9,19 @@ This repository contains a production-ready Flask app for serving multiple machi
 - [Installation](#installation)
 - [Usage](#usage)
 - [Model APIs](#model-apis)
-- [Ingestion Pipeline](#ingestion-pipeline)
 - [Transformation Pipeline](#transformation-pipeline)
-- [Retraining Models](#retraining-models)
 - [Configuration](#configuration)
 - [Deployment](#deployment)
 - [License](#license)
-- [Contributing](#contributing)
-- [Contact](#contact)
 
 ## Project Overview
 
-This project is designed to serve time-series forecasting models via a Flask API. The app allows users to interact with several models (Exponential Smoothing, ARIMA, Prophet, LSTM) to predict future data trends.
+This project is designed to serve a CNN model trained to forecast the demand of a particular SKU from a restaurant via a Flask API, which can be deployed using a Docker container. A detailed data exploration and model training notebook is available in the 'notebooks' folder. The raw data is available under the 'data' folder. The data was sourced from kaggle. The three files cover 3 years worth of sales data for a fictional restaurant.
 
-In addition to serving models, the repository includes:
-- **Ingestion Pipeline:** To fetch and load data from external sources (e.g., CSV, database).
+In addition to serving the model, the repository includes:
 - **Transformation Pipeline:** To preprocess the data for models.
-- **Retraining Pipeline:** For automatically retraining models with new data.
+- **Prediction Pipeline:** To make predictions and adjust them based on seasonal and trend adjustments
+
 
 ## Folder Structure
 
@@ -34,31 +30,25 @@ project-root/
 │
 ├── app/                      # Flask app
 │   ├── __init__.py            # Initializes the app
-│   ├── models/                # Trained models
-│   ├── api.py                 # Flask API for serving models
-│   ├── ingestion.py           # Data ingestion logic
+│   ├── app.py                 # Flask API for serving models
+│   ├── predictor.py           # Prediction scripts
 │   ├── transformation.py      # Data preprocessing steps
-│   ├── retrain.py             # Model retraining scripts
-│   ├── utils.py               # Helper functions for the app
-│   └── config.py              # App configuration
 │
-├── data/                      # Data storage (raw & processed)
-│   ├── raw/                   # Raw data files
-│   ├── processed/             # Processed data files
+├── data/                      # Data storage 
+│   ├── items.csv                  # Raw data files
+│   ├── restaurants.csv           
+│   ├── sales_train.csv            
 │
 ├── models/                    # Model training scripts
-│   ├── arima_model.py         # ARIMA model training
-│   ├── es_model.py            # Exponential Smoothing training
-│   ├── prophet_model.py       # Prophet model training
-│   ├── lstm_model.py          # LSTM model training
+│   ├── forecastingmodel.h5         # Trained model
 │
 ├── scripts/                   # Helper scripts for running app & pipelines
 │   ├── run_app.sh             # Start the Flask app
-│   ├── retrain_models.sh      # Run retraining pipeline
 │
 ├── notebooks/                 # Jupyter notebooks for EDA & experiments
-│   └── eda-and-model-building-es-arima-prophet-lstm.ipynb
+│   └── Model_trainer.ipynb
 │
+├── Dockerfile                 # Dockerfile for production deployments
 ├── requirements.txt           # Python package requirements
 ├── README.md                  # Project documentation
 └── wsgi.py                    # WSGI entry point for production deployment
