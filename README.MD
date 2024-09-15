@@ -52,3 +52,70 @@ project-root/
 ├── requirements.txt           # Python package requirements
 ├── README.md                  # Project documentation
 └── wsgi.py                    # WSGI entry point for production deployment
+
+## Features
+
+- **Model Serving:** Serve a trained CNN model via a Flask API.
+- **Data Transformation:** Preprocess data to prepare it for model inference.
+- **Modular Architecture:** Clear separation of concerns for transformation, and model serving.
+- **Scalable:** Ready for deployment in production environments (WSGI, Docker, etc.).
+
+## Installation
+
+1. **Clone the Repository**
+
+    ```bash
+    git clone https://github.com/ShubhanKamat/DemandForecasting.git
+    cd DemandForecasting
+    ```
+
+2. **Set Up Python Virtual Environment**
+
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+3. **Install Dependencies**
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+
+## Usage
+
+1. **Running the Flask App**
+
+    To start the Flask app locally, run:
+
+    ```bash
+    bash scripts/run_app.sh
+    ```
+
+    Alternatively, you can run:
+
+    ```bash
+    export FLASK_APP=app/app.py
+    export FLASK_ENV=production  # Set environment for production
+    flask run
+    ```
+
+    By default, the Flask API will be served at [http://127.0.0.1:5000](http://127.0.0.1:5000).
+
+## Model APIs
+
+The Flask app exposes a route for interacting with the model. The model is preloaded into memory when the app starts.
+
+**Endpoint:**
+
+- `POST /predict`: Predicts using the CNN model.
+
+
+**Example Request:**
+
+```bash
+curl -X POST http://127.0.0.1:5000/predict -H "Content-Type: application/json" -d '{
+    "data": [your_time_series_data]
+}'
+
