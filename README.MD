@@ -52,7 +52,7 @@ project-root/
 ├── requirements.txt           # Python package requirements
 ├── README.md                  # Project documentation
 └── wsgi.py                    # WSGI entry point for production deployment
-
+```
 ## Features
 
 - **Model Serving:** Serve a trained CNN model via a Flask API.
