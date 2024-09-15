@@ -1,6 +1,6 @@
 # Retail Demand Forecasting using deep learning
 
-This repository contains a production-ready Flask app, as well as a detailed model training notebook for serving a CNN model trained to predict the sales of a particular SKU offered by a restaurant.
+This repository contains a production-ready Flask app, as well as a detailed model training notebook for serving a CNN model trained to predict the sales of a particular restaurant.
 
 ## Table of Contents
 - [Project Overview](#project-overview)
