@@ -118,4 +118,51 @@ The Flask app exposes a route for interacting with the model. The model is prelo
 curl -X POST http://127.0.0.1:5000/predict -H "Content-Type: application/json" -d '{
     "data": [your_time_series_data]
 }'
+```
+## Response
 
+```json
+{
+  "prediction": [predicted_values]
+}
+```
+
+## Transformation Pipeline
+The transformation pipeline preprocesses raw data for model consumption.
+
+To manually run data transformation:
+
+```bash
+python app/transformation.py
+```
+
+## Deployment
+This app is ready for production deployment using WSGI servers like Gunicorn or uWSGI.
+
+Gunicorn Deployment Example:
+
+```bash
+gunicorn --bind 0.0.0.0:8000 wsgi:app
+```
+For Docker deployment, use the given Dockerfile and containerize the application.
+
+Building and Running the Docker Container
+
+1. Build the Docker Image:
+
+```bash
+docker build -t DemandForecasting .
+```
+2. Run the Docker Container:
+
+```bash
+docker run -d -p 5000:5000 DemandForecasting
+```
+
+The app will be accessible at http://localhost:5000 on your local machine.
+
+You can test the endpoints using curl or Postman.
+
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
