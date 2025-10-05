@@ -1,4 +1,4 @@
-# Retail Demand Forecasting using deep learning
+# Sales Prediction using deep learning
 
 This repository contains a Flask app, as well as a model training notebook for serving a CNN model trained to predict the sales of SKUs offered by a restaurant
 
@@ -15,7 +15,7 @@ This repository contains a Flask app, as well as a model training notebook for s
 
 ## Project Overview
 
-This project is designed to serve a CNN model trained to forecast the demand of a particular SKU from a restaurant via a Flask API, which can be deployed using a Docker container. A detailed data exploration and model training notebook is available in the 'notebooks' folder. The raw data is available under the 'data' folder. The data was sourced from kaggle. The three files cover 3 years worth of sales data for a fictional restaurant.
+This project is designed to serve a CNN model trained to predict the sales of a particular SKU from a restaurant via a Flask API, which can be deployed using a Docker container. A detailed data exploration and model training notebook is available in the 'notebooks' folder. The raw data is available under the 'data' folder. The data was sourced from kaggle. The three files cover 3 years worth of sales data for a fictional restaurant.
 
 In addition to serving the model, the repository includes:
 - **Transformation Pipeline:** To preprocess the data for models.
@@ -165,3 +165,4 @@ You can test the endpoints using curl or Postman.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
